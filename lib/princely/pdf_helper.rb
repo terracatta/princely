@@ -32,6 +32,7 @@ module Princely
 
       prince = Princely::Pdf.new(options.slice(:server_flag, :javascript_flag, :media))
       # Sets style sheets on PDF renderer
+      logger.debug "==========------#{asset_file_path(*options[:stylesheets].first)}"
       prince.add_style_sheets(*options[:stylesheets].collect{|style| asset_file_path(style)})
 
       html_string = render_to_string(options.slice(:template, :layout, :handlers, :formats))
